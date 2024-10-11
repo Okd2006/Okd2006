@@ -24,7 +24,6 @@ print("Players have to choose the position of there move based on the numpad of 
 #Entering player input
 
 def players_chance():
-    while True:
         player_1=int(input("Enter your move (X):"))
         if player_1 in [1,2,3,4,5,6,7,8,9]:
             board[player_1]="X"  
@@ -32,6 +31,9 @@ def players_chance():
             print("Please enter valid input")
             player_1=int(input("Enter your move (X):"))
         display_board()
+
+        if(win1()==True):
+            return
 
         player_2=int(input("Enter yout move(O)"))
         if player_2 in [1,2,3,4,5,6,7,8,9]:
@@ -41,79 +43,104 @@ def players_chance():
             player_2=int(input("Enter yout move(O)"))
         display_board()
         
+        
 
-def win1():
-    win=True
-    if board[7] and board[4] and board[1]=="X":
+def  win1():
+    
+    if board[7] == board[4] == board[1]=="X":
         print("Player 1 won")
-        win=True
-    elif board[8] and board[5] and board[2]=="X":
+        return True
+    elif board[8] == board[5] == board[2]=="X":
         print("Player 1 won")
-        win=True
-    elif board[9] and board[6] and board[3]=="X":
+        return True
+    elif board[9] == board[6] == board[3]=="X":
         print("Player 1 won")
-        win=True
-    elif board[7] and board[8] and board[9]=="X":
+        return True
+    elif board[7] == board[8] == board[9]=="X":
         print("Player 1 won")
-        win=True
-    elif board[4] and board[5] and board[6]=="X":
+        return True
+    elif board[4] == board[5] == board[6]=="X":
         print("Player 1 won")
-        win=True
-    elif board[1] and board[2] and board[3]=="X":
+        return True
+    elif board[1] == board[2] ==board[3]=="X":
         print("Player 1 won")
-        win=True
-    elif board[7] and board[5] and board[3]=="X":
+        return True
+    elif board[7] == board[5] == board[3]=="X":
         print("Player 1 won")
-        win=True
-    elif board[1] and board[5] and board[9]=="X":
+        return True
+    elif board[1] == board[5] == board[9]=="X":
         print("Player 1 won")
-        win=True
-    elif board[7] and board[4] and board[1]=="O":
+        return True
+    elif board[7] == board[4] == board[1]=="O":
         print("Player 2 won")
-        win=True
-    elif board[8] and board[5] and board[2]=="O":
+        return True
+    elif board[8] == board[5] == board[2]=="O":
         print("Player 2 won")
-        win=True
-    elif board[9] and board[6] and board[3]=="O":
+        return True
+    elif board[9] == board[6]== board[3]=="O":
         print("Player 2 won")
-        win=True
-    elif board[7] and board[8] and board[9]=="O":
+        return True
+    elif board[7] == board[8] == board[9]=="O":
         print("Player 2 won")
-        win=True
-    elif board[4] and board[5] and board[6]=="O":
+        return True
+    elif board[4] == board[5] == board[6]=="O":
         print("Player 2 won")
-        win=True
-    elif board[1] and board[2] and board[3]=="O":
+        return True
+    elif board[1] == board[2] == board[3]=="O":
         print("Player 2 won")
-        win=True
-    elif board[7] and board[5] and board[3]=="O":
+        return True
+    elif board[7] == board[5] == board[3]=="O":
         print("Player 2 won")
-        win=True
-    elif board[1] and board[5] and board[9]=="O":
+        return True
+    elif board[1] == board[5] == board[9]=="O":
         print("Player 2 won")
-        win=True
-
-    def end():
-        end=input("Do you want to continue : ")
-        if end=="N":
-            win=True
-        while win is not True:
-            break
-        if win is True:
-            pass
+        return True
+    else:
+        return False
+def end():
+    end=input("Do you want to continue : ")
+    if end=="N":
+        return True
+    else:
+        return False
                   
 
-            
+def main():
+    while True:
+        players_chance()
+        result=win1()
+        if(result==True):
+            choice=end()
+            if(choice==True):
+                break
+            else:
+                main()  
+        else:
+            main()
+
+main()    
 
         
-            
-                
 
-    players_chance()
-    win1()
-    end()
+    
+
+
+
+
+
+
+
+    
+    
+
+
 
         
+
+
+
+
+   
 
     
 
